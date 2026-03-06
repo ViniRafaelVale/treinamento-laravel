@@ -36,10 +36,15 @@ class LivroRequest extends FormRequest
         return $rules;
     }
 
-    public function messages()
-    {
+    protected function prepareForValidation(){
+        $this->merge([
+            'isbn' => preg_replace('/[^0-9]/', '', $this->isbn),
+        ]);
+    }
+
+    public function messages(){
         return [
-            'isbn.unique' => 'Este isbn está cadastrado para outro livro',
+            'isbn.required' => 'Digite um campo please de isbn',
         ];
     }
 }
