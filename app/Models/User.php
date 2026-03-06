@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    use \Spatie\Permission\Traits\HasRoles;
+    use \Uspdev\SenhaunicaSocialite\Traits\HasSenhaunica;
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
