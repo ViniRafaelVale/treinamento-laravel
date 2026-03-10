@@ -9,5 +9,6 @@
         @method('delete')
         <button type="submit" onclick="return confirm('Tem certeza?');">Apagar</button> 
         </form>
-    </li> 
+    </li>
+    <li>Cadastrado por: {{$livro->user->name ?? ''}} </li>
 </ul>
