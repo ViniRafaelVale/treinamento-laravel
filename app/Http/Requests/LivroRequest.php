@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class LivroRequest extends FormRequest
 {
@@ -23,8 +24,10 @@ class LivroRequest extends FormRequest
     {
         $rules = [
             'titulo' => 'required',
-            'autor' => 'required',
+            'autor' => 'nullable',
             'isbn' => ['required','integer'],
+            'tipo' => ['required', Rule::in(\App\Models\Livro::tipos())],
+            'preco' => 'nullable',
         ];
 
         if($this->method() == 'PATCH' || $this->method() == 'PUT'){

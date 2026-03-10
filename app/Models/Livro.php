@@ -13,4 +13,19 @@ class Livro extends Model
     public function user(){
         return $this->belongsTo(\App\Models\User::class);
     }
+
+    public static function tipos(){
+        return [
+            'Nacional',
+            'Internacional'
+        ];
+    }
+
+    public function setPrecoAttribute($preco){
+        $this->attributes['preco'] = str_replace(',','.',$preco);
+    }
+
+    public function getPrecoAttribute($preco){
+        return number_format($preco, 2, ',', '');
+    }
 }
