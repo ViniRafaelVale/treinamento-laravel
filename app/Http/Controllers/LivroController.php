@@ -26,15 +26,24 @@ class LivroController extends Controller
     }
 
     public function store(LivroRequest $request){
+        // 1. Verifica se o usuário é um convidado (não logado)
+        if (auth()->guest()) {
+            return redirect()->route('login')
+                ->with('alert-danger', 'Você precisa estar logado para cadastrar um livro!');
+        }
+
+        // 2. Se chegou aqui, ele está logado. Pode validar e pegar o ID.
         $validated = $request->validated();
         $validated['user_id'] = auth()->user()->id;
+        
         $livro = Livro::create($validated);
-        request()->session()->flash('alert-info','Livro cadastrado com sucesso');
+        
+        request()->session()->flash('alert-info', 'Livro cadastrado com sucesso');
+        
         return redirect("/livros/{$livro->id}");
-        //return redirect("/livros");
     }
 
-   public function show(Livro $livro){
+    public function show(Livro $livro){
         return view('livros.show',[
             'livro' => $livro
         ]);

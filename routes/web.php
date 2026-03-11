@@ -9,3 +9,4 @@ Route::get('/', [IndexController::class, 'index']);
 // Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 // Route::post('login', [LoginController::class, 'login']);
 // Route::post('logout', [LoginController::class, 'logout']);
+// Protege apenas o envio do formulário e a tela de criação
