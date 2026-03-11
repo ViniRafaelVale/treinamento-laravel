@@ -8,8 +8,12 @@ use App\Http\Requests\LivroRequest;
 
 class LivroController extends Controller
 {
-    public function index(){
-        $livros = Livro::all();
+    public function index(Request $request){
+        if(isset($request->search)) {
+            $livros = Livro::where('autor','LIKE',"%{$request->search}%")->orWhere('titulo','LIKE',"%{$request->search}%")->paginate(5);
+        } else {
+            $livros = Livro::paginate(5);
+        }
         return view('livros.index', [
             'livros' => $livros
         ]);

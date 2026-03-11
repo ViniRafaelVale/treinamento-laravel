@@ -17,6 +17,7 @@
                 <strong>Autor:</strong> {{ $livro->autor }}
             </p>
         @endif
+        
         <p class="card-text mb-1">
             <strong>Preço:</strong> R$ {{ $livro->preco ?? 'Preço não disponível' }}
         </p>

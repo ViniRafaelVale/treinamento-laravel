@@ -2,7 +2,7 @@
     <div class="card shadow-sm">
         <div class="card-body">
 
-            <h4 class="card-title mb-4">📚 Cadastro de Livro</h4>
+            <h4 class="card-title mb-4">📚 Livro</h4>
 
             <div class="mb-3">
                 <label for="titulo" class="form-label">Título</label>
